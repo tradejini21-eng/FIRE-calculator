@@ -83,9 +83,14 @@
         </div>
       </div>
 
-      <!-- FORM START -->
-      <form id="calculatorForm" onsubmit="event.preventDefault();">
+      <!-- FORM START (Connected to Web3Forms) -->
+      <form id="calculatorForm" action="https://api.web3forms.com/submit" method="POST">
         
+        <!-- Web3Forms Access Key & Subject Configuration -->
+        <input type="hidden" name="access_key" value="ce538fff-587e-4665-8e46-bb4147d04201">
+        <input type="hidden" name="subject" value="New Retirement Calculator Lead Received">
+        <input type="hidden" name="from_name" value="RetireWise Calculator">
+
         <!-- STEP 1: Basic Demographics -->
         <div id="step-1" class="step-content active space-y-6">
           <div>
@@ -96,21 +101,21 @@
           <div class="space-y-5">
             <div>
               <label for="name" class="block text-sm font-medium text-zinc-200 mb-2">Enter Your Name</label>
-              <input type="text" id="name" required placeholder="e.g. John Doe" 
+              <input type="text" id="name" name="name" required placeholder="e.g. John Doe" 
                 class="w-full bg-inputBg border border-zinc-700/80 focus:border-brandPink-500 focus:ring-1 focus:ring-brandPink-500 rounded-xl px-4 py-3.5 text-white placeholder-zinc-500 transition outline-none">
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
                 <label for="currentAge" class="block text-sm font-medium text-zinc-200 mb-2">Current Age (years)</label>
-                <input type="number" id="currentAge" required min="18" max="100" placeholder="e.g. 30"
+                <input type="number" id="currentAge" name="current_age" required min="18" max="100" placeholder="e.g. 30"
                   class="w-full bg-inputBg border border-zinc-700/80 focus:border-brandPink-500 focus:ring-1 focus:ring-brandPink-500 rounded-xl px-4 py-3.5 text-white placeholder-zinc-500 transition outline-none">
               </div>
 
               <div>
                 <label for="retireAge" class="block text-sm font-medium text-zinc-200 mb-1">Desired Retirement Age</label>
                 <p class="text-xs text-zinc-400 mb-2">At what age you would like to retire?</p>
-                <input type="number" id="retireAge" required min="19" max="100" placeholder="e.g. 60"
+                <input type="number" id="retireAge" name="desired_retirement_age" required min="19" max="100" placeholder="e.g. 60"
                   class="w-full bg-inputBg border border-zinc-700/80 focus:border-brandPink-500 focus:ring-1 focus:ring-brandPink-500 rounded-xl px-4 py-3.5 text-white placeholder-zinc-500 transition outline-none">
               </div>
             </div>
@@ -118,7 +123,7 @@
             <div>
               <label for="lifeExpectancy" class="block text-sm font-medium text-zinc-200 mb-1">Life Expectancy</label>
               <p class="text-xs text-zinc-400 mb-2">Helps us ensure your financial corpus lasts your full lifetime.</p>
-              <input type="number" id="lifeExpectancy" required min="50" max="120" value="85" placeholder="e.g. 85"
+              <input type="number" id="lifeExpectancy" name="life_expectancy" required min="50" max="120" value="85" placeholder="e.g. 85"
                 class="w-full bg-inputBg border border-zinc-700/80 focus:border-brandPink-500 focus:ring-1 focus:ring-brandPink-500 rounded-xl px-4 py-3.5 text-white placeholder-zinc-500 transition outline-none">
             </div>
           </div>
@@ -142,7 +147,7 @@
             <div>
               <label for="monthlyExpense" class="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-1">Monthly Expenses (₹)</label>
               <p class="text-xs text-zinc-400 mb-2">Used to calculate future inflation-adjusted living costs at retirement time.</p>
-              <input type="number" id="monthlyExpense" placeholder="e.g. 50000"
+              <input type="number" id="monthlyExpense" name="monthly_expenses" placeholder="e.g. 50000"
                 class="w-full bg-inputBg border border-zinc-700/80 focus:border-brandPink-500 focus:ring-1 focus:ring-brandPink-500 rounded-xl px-4 py-3 text-white placeholder-zinc-500 transition outline-none text-sm">
             </div>
 
@@ -150,7 +155,7 @@
             <div>
               <label for="currentInvestments" class="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-1">Current Investments (₹)</label>
               <p class="text-xs text-zinc-400 mb-2">Includes Mutual Funds and Equity</p>
-              <input type="number" id="currentInvestments" placeholder="e.g. 500000"
+              <input type="number" id="currentInvestments" name="current_investments" placeholder="e.g. 500000"
                 class="w-full bg-inputBg border border-zinc-700/80 focus:border-brandPink-500 focus:ring-1 focus:ring-brandPink-500 rounded-xl px-4 py-3 text-white placeholder-zinc-500 transition outline-none text-sm">
             </div>
 
@@ -158,7 +163,7 @@
             <div>
               <label for="traditionalInvestments" class="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-1">Traditional Investments (₹)</label>
               <p class="text-xs text-zinc-400 mb-2">Includes Fixed Deposits (FD) and Bank Savings</p>
-              <input type="number" id="traditionalInvestments" placeholder="e.g. 300000"
+              <input type="number" id="traditionalInvestments" name="traditional_investments" placeholder="e.g. 300000"
                 class="w-full bg-inputBg border border-zinc-700/80 focus:border-brandPink-500 focus:ring-1 focus:ring-brandPink-500 rounded-xl px-4 py-3 text-white placeholder-zinc-500 transition outline-none text-sm">
             </div>
 
@@ -166,7 +171,7 @@
             <div>
               <label for="monthlyInvestments" class="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-1">Monthly Investments (₹)</label>
               <p class="text-xs text-zinc-400 mb-2">Includes SIPs and any additional monthly savings</p>
-              <input type="number" id="monthlyInvestments" placeholder="e.g. 25000"
+              <input type="number" id="monthlyInvestments" name="monthly_investments" placeholder="e.g. 25000"
                 class="w-full bg-inputBg border border-zinc-700/80 focus:border-brandPink-500 focus:ring-1 focus:ring-brandPink-500 rounded-xl px-4 py-3 text-white placeholder-zinc-500 transition outline-none text-sm">
             </div>
 
@@ -177,25 +182,25 @@
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label for="currentReturnRate" class="block text-xs text-zinc-400 mb-1">Current Investments Return Rate (%)</label>
-                  <input type="number" id="currentReturnRate" value="10" step="0.5"
+                  <input type="number" id="currentReturnRate" name="current_return_rate" value="10" step="0.5"
                     class="w-full bg-inputBg border border-zinc-700/80 focus:border-brandPink-500 focus:ring-1 focus:ring-brandPink-500 rounded-lg px-3 py-2 text-white text-sm outline-none">
                 </div>
 
                 <div>
                   <label for="traditionalReturnRate" class="block text-xs text-zinc-400 mb-1">Traditional Investments Return Rate (%)</label>
-                  <input type="number" id="traditionalReturnRate" value="4" step="0.5"
+                  <input type="number" id="traditionalReturnRate" name="traditional_return_rate" value="4" step="0.5"
                     class="w-full bg-inputBg border border-zinc-700/80 focus:border-brandPink-500 focus:ring-1 focus:ring-brandPink-500 rounded-lg px-3 py-2 text-white text-sm outline-none">
                 </div>
 
                 <div>
                   <label for="withdrawalRate" class="block text-xs text-zinc-400 mb-1">Safe Withdrawal Rate (%)</label>
-                  <input type="number" id="withdrawalRate" value="4" step="0.5"
+                  <input type="number" id="withdrawalRate" name="safe_withdrawal_rate" value="4" step="0.5"
                     class="w-full bg-inputBg border border-zinc-700/80 focus:border-brandPink-500 focus:ring-1 focus:ring-brandPink-500 rounded-lg px-3 py-2 text-white text-sm outline-none">
                 </div>
 
                 <div>
                   <label for="inflationRate" class="block text-xs text-zinc-400 mb-1">Expected Inflation (%)</label>
-                  <input type="number" id="inflationRate" value="6" step="0.5"
+                  <input type="number" id="inflationRate" name="expected_inflation_rate" value="6" step="0.5"
                     class="w-full bg-inputBg border border-zinc-700/80 focus:border-brandPink-500 focus:ring-1 focus:ring-brandPink-500 rounded-lg px-3 py-2 text-white text-sm outline-none">
                 </div>
               </div>
@@ -225,13 +230,13 @@
           <div class="space-y-4">
             <div>
               <label for="phone" class="block text-sm font-medium text-zinc-200 mb-2">Phone Number</label>
-              <input type="tel" id="phone" required placeholder="+91 98765 43210"
+              <input type="tel" id="phone" name="phone" required placeholder="+91 98765 43210"
                 class="w-full bg-inputBg border border-zinc-700/80 focus:border-brandPink-500 focus:ring-1 focus:ring-brandPink-500 rounded-xl px-4 py-3.5 text-white placeholder-zinc-500 transition outline-none">
             </div>
 
             <div>
               <label for="email" class="block text-sm font-medium text-zinc-200 mb-2">Email Address</label>
-              <input type="email" id="email" required placeholder="name@example.com"
+              <input type="email" id="email" name="email" required placeholder="name@example.com"
                 class="w-full bg-inputBg border border-zinc-700/80 focus:border-brandPink-500 focus:ring-1 focus:ring-brandPink-500 rounded-xl px-4 py-3.5 text-white placeholder-zinc-500 transition outline-none">
             </div>
           </div>
@@ -283,6 +288,7 @@
             Recalculate
           </button>
         </div>
+
       </form>
     </div>
   </main>
@@ -292,7 +298,7 @@
     © 2026 RetireWise Inc. All calculation estimates are for illustrative purposes.
   </footer>
 
-  <!-- JavaScript Navigation Logic -->
+  <!-- JavaScript Navigation & Async Web3Forms Submission -->
   <script>
     let currentStep = 1;
 
@@ -339,65 +345,45 @@
         }
       }
 
+      const form = document.getElementById('calculatorForm');
       const submitBtn = document.getElementById('submitBtn');
-      submitBtn.innerText = 'Submitting...';
+      
+      // Update UI loading state
       submitBtn.disabled = true;
+      submitBtn.innerText = 'Submitting...';
 
-      const payload = {
-        access_key: "d6a50634-a930-4293-9a5b-e1cc181b17b1",
-        subject: "New RetireWise Calculator Lead",
-        "Name": document.getElementById('name').value,
-        "Current Age": document.getElementById('currentAge').value,
-        "Desired Retirement Age": document.getElementById('retireAge').value,
-        "Life Expectancy": document.getElementById('lifeExpectancy').value,
-        "Monthly Expense (INR)": document.getElementById('monthlyExpense').value,
-        "Current Investments (INR)": document.getElementById('currentInvestments').value,
-        "Traditional Investments (INR)": document.getElementById('traditionalInvestments').value,
-        "Monthly Investments (INR)": document.getElementById('monthlyInvestments').value,
-        "Current Return Rate (%)": document.getElementById('currentReturnRate').value,
-        "Traditional Return Rate (%)": document.getElementById('traditionalReturnRate').value,
-        "Safe Withdrawal Rate (%)": document.getElementById('withdrawalRate').value,
-        "Expected Inflation (%)": document.getElementById('inflationRate').value,
-        "Phone": document.getElementById('phone').value,
-        "Email": document.getElementById('email').value
-      };
+      const formData = new FormData(form);
 
       try {
-        const response = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify(payload)
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
         });
 
         const result = await response.json();
-        if (!result.success) {
-          alert("Submission failed. Please try again.");
-          submitBtn.innerText = 'Submit';
+
+        if (result.success) {
+          const name = document.getElementById('name').value;
+          const retireAge = document.getElementById('retireAge').value;
+          const email = document.getElementById('email').value;
+
+          document.getElementById('user-display-name').innerText = name || 'User';
+          document.getElementById('summary-retire-age').innerText = `${retireAge} years old`;
+          document.getElementById('summary-email').innerText = email;
+
+          document.getElementById('progress-container').style.display = 'none';
+          document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+          document.getElementById('step-success').classList.add('active');
+        } else {
+          alert('Submission failed: ' + result.message);
           submitBtn.disabled = false;
-          return;
+          submitBtn.innerText = 'Submit';
         }
       } catch (error) {
-        console.error("Submission Error:", error);
-        alert("An error occurred. Please check your network connection.");
-        submitBtn.innerText = 'Submit';
+        alert('An error occurred during submission. Please try again.');
         submitBtn.disabled = false;
-        return;
+        submitBtn.innerText = 'Submit';
       }
-
-      const name = document.getElementById('name').value;
-      const retireAge = document.getElementById('retireAge').value;
-      const email = document.getElementById('email').value;
-
-      document.getElementById('user-display-name').innerText = name || 'User';
-      document.getElementById('summary-retire-age').innerText = `${retireAge} years old`;
-      document.getElementById('summary-email').innerText = email;
-
-      document.getElementById('progress-container').style.display = 'none';
-      document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
-      document.getElementById('step-success').classList.add('active');
     }
   </script>
 </body>
